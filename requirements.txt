@@ -5,3 +5,5 @@ torch>=2.1
 tqdm>=4.66
 matplotlib>=3.7
 requests>=2.31
+streamlit>=1.30.0
+altair>=5.0.0

@@ -19,6 +19,10 @@
 - ECE 570 project tracks handout (Track 2 requirements, deliverables)
 - Project checkpoint 1 instructions (8-slide structure, code snippet limits, result requirement)
 
+## Software Libraries Used
+- Streamlit (used for standard, simple data dashboards to fulfill Track 2 product prototyping):
+  - https://streamlit.io/
+
 ## Notes on usage
 - This repo implements a baseline from scratch (PyTorch).
 - No external repository code was copied.

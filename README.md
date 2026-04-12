@@ -1,9 +1,8 @@
-# Log Anomaly Detection (HDFS) - Checkpoint 1 Starter Repo
+# Log Anomaly Detection for Security Analysts - ECE 570 Track 2
 
-This repo is a **checkpoint-1-ready** baseline for Track 2 (ProductPrototype): a SOC-style tool that learns normal
-log-event sequences and flags anomalous sessions.
+This repository implements an end-to-end Track 2 (ProductPrototype) project: a SOC-style tool that learns normal log-event sequences and flags anomalous sessions.
 
-Scope for checkpoint 1: **model training + a measurable metric** (session-level Precision/Recall/F1).
+Scope: **Deep learning model pipeline + measurable metrics + analyst-facing tool**.
 
 ## What this implements (baseline)
 - Dataset: LogHub HDFS *preprocessed* files (Event_traces + anomaly labels)
@@ -40,11 +39,29 @@ Training runs evaluation at the end, but you can re-run:
 python -m src.eval   --ckpt runs/cp1/model.pt   --meta runs/cp1/meta.json   --event_traces data/raw/Event_traces.csv   --labels data/raw/anomaly_label.csv   --topk 9
 ```
 
+### 5) Run Inference (CLI)
+You can directly review new/specific sessions via the CLI:
+```bash
+python -m src.infer \
+  --ckpt runs/cp1/model.pt \
+  --meta runs/cp1/meta.json \
+  --event_traces data/raw/Event_traces.csv
+```
+
+### 6) Run the Analyst Dashboard (Streamlit Frontend)
+To provide a true Product Prototype experience for a security analyst, there is a simple web interface:
+```bash
+streamlit run src/app.py
+```
+Upload your `Event_traces.csv` to see a detailed breakdown of anomalous vs normal sessions!
+
 ## Repo layout
 - `src/data/` download + parsing utilities
-- `src/models/` LSTM baseline
+- `src/models/` LSTM model & Frequency baseline
 - `src/train.py` training loop + end-of-run evaluation
-- `src/eval.py` standalone evaluation
+- `src/eval.py` standalone evaluation against baseline
+- `src/infer.py` CLI user tool
+- `src/app.py` Streamlit analyst dashboard prototype
 - `sources.md` citations + what this repo is inspired by
 
 ## Notes on attribution
