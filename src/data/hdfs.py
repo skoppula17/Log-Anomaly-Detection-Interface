@@ -4,6 +4,7 @@ from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 @dataclass(frozen=True)
 class HDFSData:
@@ -88,7 +89,6 @@ def align_labels(block_ids: List[str], labels_map: Dict[str, int]) -> np.ndarray
     return y
 
 def make_next_event_windows(seq: List[int], window: int) -> List[Tuple[List[int], int]]:
-    # returns list of (context_window, next_event)
     if len(seq) <= window:
         return []
     out = []
@@ -97,3 +97,25 @@ def make_next_event_windows(seq: List[int], window: int) -> List[Tuple[List[int]
         y = seq[i+window]
         out.append((x, y))
     return out
+
+
+def split_by_blockid(
+    block_ids: List[str],
+    y_session: np.ndarray,
+    train_ratio: float = 0.7,
+    val_ratio: float = 0.15,
+    seed: int = 42,
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    idx = np.arange(len(block_ids))
+    temp_size = 1.0 - train_ratio
+    train_idx, temp_idx = train_test_split(
+        idx, test_size=temp_size, random_state=seed, stratify=y_session
+    )
+    val_size = val_ratio / temp_size
+    val_idx, test_idx = train_test_split(
+        temp_idx,
+        test_size=1 - val_size,
+        random_state=seed,
+        stratify=y_session[temp_idx],
+    )
+    return train_idx, val_idx, test_idx
