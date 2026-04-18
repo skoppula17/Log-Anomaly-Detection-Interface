@@ -12,14 +12,14 @@ Scope: **Deep learning model pipeline + measurable metrics + analyst-facing tool
 ## Quickstart
 ### 1) Create env + install deps
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ### 2) Download data (LogHub preprocessed)
 ```bash
-python -m src.data.download_hdfs --out data/raw
+python3 -m src.data.download_hdfs --out data/raw
 ```
 
 This script downloads:
@@ -30,19 +30,19 @@ If LogHub ever changes paths, update URLs inside `src/data/download_hdfs.py`.
 
 ### 3) Train baseline
 ```bash
-python -m src.train   --event_traces data/raw/Event_traces.csv   --labels data/raw/anomaly_label.csv   --out_dir runs/cp1   --epochs 2   --topk 9
+python3 -m src.train   --event_traces data/raw/Event_traces.csv   --labels data/raw/anomaly_label.csv   --out_dir runs/cp1   --epochs 2   --topk 9
 ```
 
 ### 4) Evaluate (prints metrics + saves confusion matrix)
 Training runs evaluation at the end, but you can re-run:
 ```bash
-python -m src.eval   --ckpt runs/cp1/model.pt   --meta runs/cp1/meta.json   --event_traces data/raw/Event_traces.csv   --labels data/raw/anomaly_label.csv   --topk 9
+python3 -m src.eval   --ckpt runs/cp1/model.pt   --meta runs/cp1/meta.json   --event_traces data/raw/Event_traces.csv   --labels data/raw/anomaly_label.csv   --topk 9
 ```
 
 ### 5) Run Inference (CLI)
 You can directly review new/specific sessions via the CLI:
 ```bash
-python -m src.infer \
+python3 -m src.infer \
   --ckpt runs/cp1/model.pt \
   --meta runs/cp1/meta.json \
   --event_traces data/raw/Event_traces.csv
