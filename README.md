@@ -1,15 +1,14 @@
 # Log Anomaly Detection for Security Analysts - ECE 570 Track 2
 
-This repository implements an end-to-end Track 2 (ProductPrototype) project: a SOC-style tool that learns normal log-event sequences and flags anomalous sessions.
-
-Scope: **Deep learning model pipeline + measurable metrics + analyst-facing tool**.
+This repository implements an end-to-end Track 2 (ProductPrototype) project: This is a SOC tool that learns normal log-event sequences and flags anomalous sessions.
+This includes the following features: Deep learning model pipeline, measurable metrics, and consumer facing interface**.
 
 ## What this implements (baseline)
 - Dataset: LogHub HDFS (preprocessed) files (Event_traces + anomaly labels)
 - Model: **DeepLog-style** next-event prediction with an LSTM
 - Decision rule: a session is anomalous if any next-event falls outside top-k predictions
 
-## Quickstart
+## How to Set Up the Project
 ### 1) Create env + install deps
 ```bash
 python3 -m venv .venv
@@ -83,7 +82,7 @@ Upload your `Event_traces.csv` to see a detailed breakdown of anomalous vs norma
 In accordance with course policies, the following outlines the code origins for this project:
 
 - **Original Code**: The majority of the repository, including the architecture design, the Streamlit dashboard (`src/app.py`), the core LSTM baseline components, the evaluation logic, and the overall pipeline flow, was authored by me. I also wrote the contents and structure of this `README.md`, but utilized an LLM to assist with formatting it cleanly. 
-- **AI-Assisted Code**: Generative AI was used as a pair-programming tool to assist with UI bug fixes, construct graphing/visualization code, and dynamically parse the external HDFS datasets.
+- **AI-Assisted Code**: Generative AI was used to assist with UI bug fixes, construct graphing/visualization code, and dynamically parse the external HDFS datasets.
 
 Specifically, AI was prompted to write:
 1. **HDFS Dataset Parsing** (`src/data/download_hdfs.py: lines 38-47`): Code to parse the raw 100k Loglizer dataset, extracting `BlockId` and generating the event sequences.
