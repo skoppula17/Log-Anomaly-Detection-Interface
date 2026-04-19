@@ -5,7 +5,7 @@
   - https://github.com/logpai/loghub
   - Zenodo record: https://zenodo.org/records/8196385
 
-## Method inspiration (not code)
+## Methodology
 - DeepLog (next-event prediction + top-k rule for anomaly detection):
   - Du et al., "DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning" (CCS 2017)
   - PDF: https://acmccs.github.io/papers/p1285-duA.pdf
