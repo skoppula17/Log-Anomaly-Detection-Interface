@@ -16,8 +16,7 @@
   - PyPI: https://pypi.org/project/drain3/0.6/
 
 ## Course specs
-- ECE 570 project tracks handout (Track 2 requirements, deliverables)
-- Project checkpoint 1 instructions (8-slide structure, code snippet limits, result requirement)
+- ECE 570 project tracks handout from class(Track 2 requirements, deliverables)
 
 ## Software Libraries Used
 - Streamlit (used for standard, simple data dashboards to fulfill Track 2 product prototyping):
