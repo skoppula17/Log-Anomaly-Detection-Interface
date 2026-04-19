@@ -23,6 +23,6 @@
 - Streamlit (used for standard, simple data dashboards to fulfill Track 2 product prototyping):
   - https://streamlit.io/
 
-## Notes on usage
+## Extra Notes
 - This repo implements a baseline from scratch (PyTorch).
 - No external repository code was copied.
