@@ -5,6 +5,8 @@ import torch
 from pathlib import Path
 import os
 import io
+import sys
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from src.models.deeplog_lstm import DeepLogLSTM
 from src.eval import session_is_anomalous, make_next_event_windows, _predict_next_topk
